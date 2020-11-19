@@ -15,6 +15,12 @@ defmodule ExMonApiWeb.TrainerPokemonsController do
     |> handle_delete(conn)
   end
 
+  def show(conn, %{"id" => id}) do
+    id
+    |> ExMonApi.fetch_trainer_pokemon()
+    |> handle_response(conn, "show.json", :ok)
+  end
+
   defp handle_delete({:error, _reason} = error, _conn), do: error
 
   defp handle_delete({:ok, _pokemon}, conn) do

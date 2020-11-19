@@ -1,4 +1,4 @@
-defmodule ExMonApi.Trainer.Get do
+defmodule ExMonApi.Trainer.Pokemon.Get do
   alias Ecto.UUID
   alias ExMonApi.{Repo, Trainer.Pokemon}
 
@@ -10,9 +10,9 @@ defmodule ExMonApi.Trainer.Get do
   end
 
   defp get(uuid) do
-    case Repo.get(Trainer, uuid) do
-      nil -> {:error, "Trainer not found!"}
-      trainer -> {:ok, trainer}
+    case Repo.get(Pokemon, uuid) do
+      nil -> {:error, "Pokemon not found!"}
+      pokemon -> {:ok, Repo.preload(pokemon, :trainer)}
     end
   end
 end
