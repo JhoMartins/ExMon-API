@@ -1,4 +1,4 @@
-defmodule ExMOnApi.Trainer.CreateTest do
+defmodule ExMonApi.Trainer.CreateTest do
   use ExMonApi.DataCase
 
   alias ExMonApi.{Trainer, Repo}
