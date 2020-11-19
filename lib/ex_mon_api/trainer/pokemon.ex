@@ -1,0 +1,32 @@
+defmodule ExMonApi.Trainer.Pokemon do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  alias ExMonApi.Trainer
+
+  @primary_key {:id, Ecto.UUID, autogenerate: true}
+  @foreign_key_type Ecto.UUID
+
+  schema "pokemons" do
+    field :name, :string
+    field :nickname, :string
+    field :weigth, :integer
+    field :types, {:array, :string}
+    belongs_to(:trainer, Trainer)
+    timestamps()
+  end
+
+  @required [:name, :nickname, :weigth, :types, :trainer_id]
+
+  def build(params) do
+    params
+    |> changeset()
+    |> apply_action(:insert)
+  end
+  def changeset(params) do
+    %__MODULE__{}
+    |> cast(params, @required)
+    |> validate_required(@required)
+    |> validate_length(:nickname, min: 2)
+  end
+end
