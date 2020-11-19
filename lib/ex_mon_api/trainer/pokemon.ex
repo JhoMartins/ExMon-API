@@ -24,11 +24,20 @@ defmodule ExMonApi.Trainer.Pokemon do
     |> apply_action(:insert)
   end
 
+  @spec changeset(:invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}) ::
+          Ecto.Changeset.t()
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required)
     |> validate_required(@required)
     |> assoc_constraint(:trainer)
+    |> validate_length(:nickname, min: 2)
+  end
+
+  def update_changeset(pokemon, params) do
+    pokemon
+    |> cast(params, [:nickname])
+    |> validate_required([:nickname])
     |> validate_length(:nickname, min: 2)
   end
 end
