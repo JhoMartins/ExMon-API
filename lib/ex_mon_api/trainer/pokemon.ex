@@ -10,13 +10,13 @@ defmodule ExMonApi.Trainer.Pokemon do
   schema "pokemons" do
     field :name, :string
     field :nickname, :string
-    field :weigth, :integer
+    field :weight, :integer
     field :types, {:array, :string}
     belongs_to(:trainer, Trainer)
     timestamps()
   end
 
-  @required [:name, :nickname, :weigth, :types, :trainer_id]
+  @required [:name, :nickname, :weight, :types, :trainer_id]
 
   def build(params) do
     params
