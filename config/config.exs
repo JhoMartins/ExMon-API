@@ -26,7 +26,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :ex_mon_api, ExMonApiWeb.Guardian,
+config :ex_mon_api, ExMonApiWeb.Auth.Guardian,
        issuer: "ex_mon_api",
        secret_key: "H8fFRtGGCVVcY7pAnRtIZPaBPh5oTS1ELOXbJ3DCGnwoNQJrxwSRYcDcTO/jzscj"
 

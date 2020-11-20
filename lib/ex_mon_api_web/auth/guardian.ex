@@ -1,4 +1,4 @@
-defmodule ExMonApiWeb.Guardian do
+defmodule ExMonApiWeb.Auth.Guardian do
   use Guardian, otp_app: :ex_mon_api
 
   def subject_for_token(trainer, _claims) do
